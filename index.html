@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>For Rocky — Happy Birthday</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --wine: #6e263d;
+        --rose: #b95770;
+        --pink: #f5deda;
+        --cream: #fffaf6;
+        --paper: #fffdf9;
+        --ink: #342026;
+        --muted: #80636b;
+        --gold: #c9a05b;
+        --gold-light: #ead7ae;
+        --shadow: 0 24px 60px rgba(74, 25, 42, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+        overflow-x: hidden;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .serif {
+        font-family: "Playfair Display", serif;
+      }
+
+      /* INTRO */
+      .intro {
+        min-height: 100svh;
+        display: grid;
+        place-items: center;
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(
+            circle at 20% 20%,
+            rgba(201, 160, 91, 0.2),
+            transparent 28%
+          ),
+          radial-gradient(
+            circle at 85% 75%,
+            rgba(185, 87, 112, 0.2),
+            transparent 32%
+          ),
+          linear-gradient(145deg, #fff7f1, #f5dedb 58%, #efd0d0);
+      }
+
+      .intro-content {
+        width: min(760px, 90%);
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .tiny {
+        text-transform: uppercase;
+        letter-spacing: 0.22em;
+        font-size: 0.72rem;
+        color: var(--wine);
+        opacity: 0;
+        animation: rise 0.8s 0.2s forwards;
+      }
+
+      .intro h1 {
+        font-size: clamp(4rem, 13vw, 8.5rem);
+        line-height: 0.88;
+        color: var(--wine);
+        margin: 1.3rem 0;
+        font-weight: 500;
+        opacity: 0;
+        animation: rise 1s 0.4s forwards;
+      }
+
+      .intro h1 em {
+        display: block;
+        color: var(--rose);
+      }
+
+      .intro p {
+        max-width: 480px;
+        margin: 0 auto;
+        color: #684550;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        opacity: 0;
+        animation: rise 1s 0.7s forwards;
+      }
+
+      .begin {
+        margin-top: 2.3rem;
+        border: 1px solid rgba(110, 38, 61, 0.35);
+        background: rgba(255, 255, 255, 0.35);
+        color: var(--wine);
+        padding: 0.85rem 1.35rem;
+        border-radius: 999px;
+        cursor: pointer;
+        opacity: 0;
+        animation: rise 1s 1s forwards;
+        transition: 0.3s ease;
+      }
+
+      .begin:hover {
+        background: var(--wine);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      .orb {
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        border: 1px solid rgba(110, 38, 61, 0.12);
+        animation: float 7s ease-in-out infinite;
+      }
+
+      .orb.one {
+        top: 8%;
+        left: -50px;
+      }
+      .orb.two {
+        bottom: 4%;
+        right: -40px;
+        width: 240px;
+        height: 240px;
+        animation-delay: -2s;
+      }
+
+      /* PETALS */
+      .petals {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .petal {
+        position: absolute;
+        top: -40px;
+        width: 12px;
+        height: 8px;
+        border-radius: 70% 30% 65% 35%;
+        background: linear-gradient(135deg, #c86a80, #ead7ae);
+        opacity: 0.45;
+        animation: fall linear infinite;
+      }
+
+      /* SHARED */
+      section {
+        padding: 7rem 1.25rem;
+      }
+
+      .shell {
+        max-width: 920px;
+        margin: auto;
+      }
+
+      .section-label {
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: 0.7rem;
+        color: var(--rose);
+        margin-bottom: 0.8rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: clamp(2.3rem, 7vw, 4rem);
+        font-weight: 500;
+        line-height: 1;
+        color: var(--wine);
+        margin: 0 0 1rem;
+      }
+
+      .section-sub {
+        text-align: center;
+        max-width: 520px;
+        margin: 0 auto 3rem;
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      /* LETTER */
+      .letter-section {
+        background: var(--cream);
+      }
+
+      .letter {
+        position: relative;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.72)),
+          repeating-linear-gradient(
+            transparent 0,
+            transparent 35px,
+            rgba(110, 38, 61, 0.045) 36px
+          );
+        border: 1px solid rgba(110, 38, 61, 0.08);
+        padding: clamp(2rem, 7vw, 5rem);
+        box-shadow: var(--shadow);
+        transform: rotate(-0.5deg);
+      }
+
+      .letter:before {
+        content: "♡";
+        position: absolute;
+        top: 22px;
+        right: 28px;
+        font-size: 2rem;
+        color: var(--gold);
+      }
+
+      .letter .to {
+        color: var(--gold);
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.4rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .letter p {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.08rem, 2.4vw, 1.35rem);
+        line-height: 1.9;
+        margin: 0 0 1.25rem;
+        color: #482a34;
+      }
+
+      .signature {
+        margin-top: 2rem;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        font-size: 1.35rem;
+        color: var(--wine);
+      }
+
+      /* LITTLE THINGS */
+      .things {
+        background: #f8e8e5;
+      }
+
+      .things-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 3rem;
+      }
+
+      .thing {
+        min-height: 180px;
+        perspective: 1000px;
+        cursor: pointer;
+      }
+
+      .thing-inner {
+        width: 100%;
+        height: 100%;
+        min-height: 180px;
+        position: relative;
+        transition: transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+
+      .thing.open .thing-inner {
+        transform: rotateY(180deg);
+      }
+
+      .face {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        padding: 1.5rem;
+        border-radius: 18px;
+      }
+
+      .front {
+        background: var(--paper);
+        border: 1px solid rgba(110, 38, 61, 0.08);
+        box-shadow: 0 12px 35px rgba(80, 30, 45, 0.08);
+      }
+
+      .front span {
+        display: block;
+        color: var(--gold);
+        font-size: 1.5rem;
+        margin-bottom: 0.7rem;
+      }
+
+      .front h3 {
+        font-family: "Playfair Display", serif;
+        color: var(--wine);
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 500;
+      }
+
+      .front small {
+        color: var(--muted);
+        margin-top: 0.6rem;
+      }
+
+      .back {
+        background: var(--wine);
+        color: #fff8f5;
+        transform: rotateY(180deg);
+        line-height: 1.7;
+      }
+
+      /* MEMORY */
+      .memory {
+        background: var(--cream);
+      }
+
+      .memory-line {
+        display: grid;
+        grid-template-columns: 110px 1fr;
+        gap: 2rem;
+        margin: 3rem 0;
+        align-items: start;
+      }
+
+      .memory-date {
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: var(--gold);
+        font-size: 1.1rem;
+        padding-top: 0.4rem;
+      }
+
+      .memory-card {
+        border-left: 1px solid var(--gold-light);
+        padding-left: 2rem;
+      }
+
+      .memory-card h3 {
+        color: var(--wine);
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem;
+        margin: 0 0 0.6rem;
+      }
+
+      .memory-card p {
+        color: var(--muted);
+        line-height: 1.8;
+        margin: 0;
+      }
+
+      /* GALLERY */
+      .gallery {
+        background: #f7e3df;
+      }
+
+      .mosaic {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1rem;
+      }
+
+      .frame {
+        background: white;
+        padding: 0.65rem 0.65rem 2.5rem;
+        box-shadow: 0 18px 40px rgba(74, 25, 42, 0.13);
+        position: relative;
+        transition: transform 0.35s ease;
+      }
+
+      .frame:hover {
+        transform: translateY(-8px) rotate(0deg) !important;
+      }
+
+      .frame:nth-child(1) {
+        grid-column: span 3;
+        transform: rotate(-2deg);
+      }
+      .frame:nth-child(2) {
+        grid-column: span 3;
+        transform: rotate(1.5deg);
+      }
+      .frame:nth-child(3) {
+        grid-column: span 2;
+        transform: rotate(-1deg);
+      }
+      .frame:nth-child(4) {
+        grid-column: span 2;
+        transform: rotate(1.5deg);
+      }
+      .frame:nth-child(5) {
+        grid-column: span 2;
+        transform: rotate(-2deg);
+      }
+
+      .frame .photo {
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+        background: linear-gradient(135deg, #d48a9b, #ead7ae);
+      }
+
+      .frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .caption {
+        position: absolute;
+        bottom: 0.65rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: "Playfair Display", serif;
+        font-style: italic;
+        color: #9a6976;
+        font-size: 0.82rem;
+      }
+
+      /* FINAL */
+      .final {
+        min-height: 90svh;
+        display: grid;
+        place-items: center;
+        text-align: center;
+        background:
+          radial-gradient(
+            circle at 50% 25%,
+            rgba(234, 215, 174, 0.22),
+            transparent 35%
+          ),
+          linear-gradient(155deg, #6e263d, #3d1825);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-content {
+        max-width: 680px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .final h2 {
+        font-size: clamp(3rem, 9vw, 6rem);
+        line-height: 0.95;
+        margin: 0 0 1.5rem;
+        font-weight: 500;
+      }
+
+      .final p {
+        color: #f0dfe0;
+        line-height: 1.9;
+        font-size: 1.08rem;
+      }
+
+      .secret-btn {
+        margin-top: 2rem;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        background: transparent;
+        color: white;
+        border-radius: 999px;
+        padding: 0.85rem 1.5rem;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      .secret-btn:hover {
+        background: white;
+        color: var(--wine);
+      }
+
+      .secret {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: 0.8s ease;
+      }
+
+      .secret.show {
+        max-height: 300px;
+        opacity: 1;
+        margin-top: 2rem;
+      }
+
+      .secret p {
+        font-family: "Playfair Display", serif;
+        font-size: 1.35rem;
+        color: var(--gold-light);
+      }
+
+      .heart {
+        font-size: 2rem;
+        margin-top: 2rem;
+        animation: heartbeat 1.8s ease-in-out infinite;
+      }
+
+      /* REVEAL */
+      .reveal {
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+          opacity 0.9s ease,
+          transform 0.9s ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes rise {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-18px);
+        }
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(115vh) rotate(260deg);
+        }
+      }
+
+      @keyframes heartbeat {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        15% {
+          transform: scale(1.15);
+        }
+        30% {
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 700px) {
+        section {
+          padding: 5rem 1rem;
+        }
+
+        .things-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .memory-line {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+
+        .memory-card {
+          padding-left: 1.2rem;
+        }
+
+        .mosaic {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .frame:nth-child(n) {
+          grid-column: span 1;
+          transform: none;
+        }
+
+        .frame:first-child {
+          grid-column: span 2;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- OPENING -->
+    <section class="intro" id="top">
+      <div class="petals"></div>
+      <div class="orb one"></div>
+      <div class="orb two"></div>
+
+      <div class="intro-content">
+        <div class="tiny">A little something for you</div>
+
+        <h1 class="serif">
+          Happy Birthday,
+          <em>Rocky.</em>
+        </h1>
+
+        <p>
+          I could have just sent you a birthday message... but somehow that
+          didn't feel like enough.
+        </p>
+
+        <button
+          class="begin"
+          onclick="
+            document
+              .getElementById('letter')
+              .scrollIntoView({ behavior: 'smooth' })
+          "
+        >
+          I made this for you ↓
+        </button>
+      </div>
+    </section>
+
+    <!-- LETTER -->
+    <section class="letter-section" id="letter">
+      <div class="shell reveal">
+        <div class="letter">
+          <div class="to">To Rocky,</div>
+
+          <p>
+            Sometimes I think about how random it was that we met — just a small
+            party at res, back when we were both still figuring out university
+            and life. I don't think either of us knew then that we'd end up
+            making so many memories together.
+          </p>
+
+          <p>
+            Then lockdown happened, and somehow those days became our own little
+            world. We practically spent them together, turning ordinary days
+            into memories without even trying. No big plans, no fancy dates —
+            just us and the pap and steak container outside, being comfortable
+            enough to share the quiet parts of life.
+          </p>
+
+          <p>
+            And somehow, <em>"I cooked, come through"</em> became our love
+            language. A simple message, but one that could say so much: I want
+            to see you, let's spend some time together.
+          </p>
+
+          <p>
+            Looking back, I think that's one of the things I love most about us.
+            It wasn't always about doing something special. Sometimes the
+            special part was simply having you there.
+          </p>
+
+          <p>
+            So today, I hope you know how grateful I am for every laugh, every
+            random conversation, every meal, and every little moment that
+            somehow became part of our story.
+          </p>
+
+          <div class="signature">— with love, always ♡</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LITTLE THINGS -->
+    <section class="things">
+      <div class="shell">
+        <div class="section-label reveal">tap the cards</div>
+        <h2 class="section-title serif reveal">A few little things.</h2>
+        <p class="section-sub reveal">
+          Some things are difficult to explain until you experience them. So...
+          tap one.
+        </p>
+
+        <div class="things-grid">
+          <div class="thing reveal" onclick="this.classList.toggle('open')">
+            <div class="thing-inner">
+              <div class="face front">
+                <div>
+                  <span>♡</span>
+                  <h3>Your laugh</h3>
+                  <small>one of my favourite sounds</small>
+                </div>
+              </div>
+              <div class="face back">
+                Especially the laugh that has tears rolling down your eyes, the
+                one that makes it impossible for me not to smile too. Somehow,
+                even the smallest moments become better when you're laughing.
+              </div>
+            </div>
+          </div>
+
+          <div class="thing reveal" onclick="this.classList.toggle('open')">
+            <div class="thing-inner">
+              <div class="face front">
+                <div>
+                  <span>✦</span>
+                  <h3>Our ordinary days</h3>
+                  <small>that never felt ordinary</small>
+                </div>
+              </div>
+              <div class="face back">
+                The Heights days taught me that I didn't need some big adventure
+                to enjoy being with you. Sometimes being in the same space,
+                doing almost nothing, was enough.
+              </div>
+            </div>
+          </div>
+
+          <div class="thing reveal" onclick="this.classList.toggle('open')">
+            <div class="thing-inner">
+              <div class="face front">
+                <div>
+                  <span>∞</span>
+                  <h3>“I cooked, come through”</h3>
+                  <small>our love language</small>
+                </div>
+              </div>
+              <div class="face back">
+                Five little words that somehow meant everything: food is ready,
+                I want your company, come spend time with me. If that isn't
+                love, I don't know what is... Also made me fat but I forgive
+                You.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMORY TIMELINE -->
+    <section class="memory">
+      <div class="shell">
+        <div class="section-label reveal">our little story</div>
+        <h2 class="section-title serif reveal">Things worth remembering.</h2>
+
+        <div class="memory-line reveal">
+          <div class="memory-date">Then</div>
+          <div class="memory-card">
+            <h3>The Beginning</h3>
+            <p>
+              Somewhere between university life, a party at res, we met. At the
+              time it was just another day. Looking back now, it's funny to
+              think that one ordinary night would become the beginning of so
+              many memories.
+            </p>
+          </div>
+        </div>
+
+        <div class="memory-line reveal">
+          <div class="memory-date">Somewhere along the way</div>
+          <div class="memory-card">
+            <h3>The Heights days.</h3>
+            <p>
+              While the world was stuck inside, we somehow found our own little
+              routine. We practically spent lockdown together, and the simplest
+              days became some of the memories I still think about.
+            </p>
+          </div>
+        </div>
+
+        <div class="memory-line reveal">
+          <div class="memory-date">Now</div>
+          <div class="memory-card">
+            <h3>Still going strong</h3>
+            <p>
+              Now We're all grown now. University feels like a lifetime ago.
+              Those res days, the random chillas, the lockdown days, the “I
+              cooked, come through” messages... So much has changed since then.
+              We've grown. We've changed. Life has taken us in different
+              directions. But somehow, through all of it, we're still here.
+              Still laughing. Still making memories. Still finding our way back
+              to each other. And I think that's something worth celebrating too.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PHOTOS -->
+    <section class="gallery">
+      <div class="shell">
+        <div class="section-label reveal">the memories</div>
+        <h2 class="section-title serif reveal">
+          Moments with You were never dull man.
+        </h2>
+        <p class="section-sub reveal">
+          Because some moments deserve more than a camera roll.
+        </p>
+
+        <div class="mosaic">
+          <div class="frame reveal">
+            <div class="photo">
+              <img src="images/fav.jpeg" alt="Rocky" />
+            </div>
+            <div class="caption">one of my favourites ♡</div>
+          </div>
+
+          <div class="frame reveal">
+            <div class="photo">
+              <img
+                src="images/WhatsApp Image 2026-09-20 at 8.41.25 PM.jpeg"
+                alt="Rocky"
+              />
+            </div>
+            <div class="caption">that smile.</div>
+          </div>
+
+          <div class="frame reveal">
+            <div class="photo">
+              <img src="images/kee.jpeg" alt="Rocky" />
+            </div>
+            <div class="caption">a moment worth keeping</div>
+          </div>
+
+          <div class="frame reveal">
+            <div class="photo">
+              <img src="images/you.jpeg" alt="Rocky" />
+            </div>
+            <div class="caption">you, being you</div>
+          </div>
+
+          <div class="frame reveal">
+            <div class="photo">
+              <img src="images/last.jpeg" alt="Add another Rocky photo" />
+            </div>
+            <div class="caption">one more memory...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="final">
+      <div class="petals"></div>
+
+      <div class="final-content reveal">
+        <div class="section-label" style="color: #ead7ae">one last thing</div>
+
+        <h2 class="serif">Happy Birthday,<br />My Love.</h2>
+
+        <p>
+          I hope today reminds you of how loved you are. I hope you laugh until
+          your stomach hurts, smile until your cheeks hurt, and make a memory
+          you'll want to keep forever.
+        </p>
+
+        <button
+          class="secret-btn"
+          onclick="document.querySelector('.secret').classList.toggle('show')"
+        >
+          There's one more thing...
+        </button>
+
+        <div class="secret">
+          <p>I num You ♡</p>
+        </div>
+
+        <div class="heart">♡</div>
+      </div>
+    </section>
+
+    <script>
+      // Falling petals
+      document.querySelectorAll(".petals").forEach((container) => {
+        const count = window.innerWidth < 600 ? 10 : 18;
+
+        for (let i = 0; i < count; i++) {
+          const petal = document.createElement("div");
+          petal.className = "petal";
+
+          const size = 7 + Math.random() * 12;
+
+          petal.style.width = size + "px";
+          petal.style.height = size * 0.7 + "px";
+          petal.style.left = Math.random() * 100 + "%";
+          petal.style.animationDuration = 8 + Math.random() * 9 + "s";
+          petal.style.animationDelay = Math.random() * -12 + "s";
+
+          container.appendChild(petal);
+        }
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 },
+      );
+
+      document
+        .querySelectorAll(".reveal")
+        .forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
